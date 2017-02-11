@@ -1,6 +1,58 @@
 
 body {
-  background: #000;
-  color: #fff;
+  background: #fff;
+  color: #000;
   text-align: center;
+  font-family: 'Courier', monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+#logo {
+  opacity: 0;
+  animation-delay: 1s;
+  animation-name: bounceIn;
+  animation-duration: 450ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #eee;
+}
+
+p.sexton {
+  font-size: 18px;
+}
+
+p.ljus-text {
+  color: #ccc;
+}
+
+.foten p {
+  font-size: 12px;
+  margin-top: 30px;
+}
+
+@keyframes bounceIn{
+  0%{
+    opacity: 0;
+    transform: scale(0.3) translate3d(0,0,0);
+  }
+  50%{
+    opacity: 0.9;
+    transform: scale(1.2);
+  }
+  80%{
+    opacity: 1;
+    transform: scale(0.89);
+  }
+  100%{
+    opacity: 1;
+    transform: scale(1) translate3d(0,0,0);
+  }
 }
