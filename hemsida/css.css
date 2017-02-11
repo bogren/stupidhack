@@ -6,9 +6,13 @@ body {
   font-family: 'Courier', monospace;
   font-size: 14px;
   line-height: 1.5;
+  margin: 0;
+  animation: shake .3s ease-in forwards;
+}
+
+#hemsida {
   max-width: 700px;
   margin: 0 auto;
-  animation: shake .3s ease-in forwards;
 }
 
 #logo {
@@ -69,12 +73,12 @@ p.sexton {
   font-size: 18px;
 }
 
-p.ljus-text {
-  color: #ccc;
+video {
+  min-width: 100%;
 }
 
-:-webkit-full-screen {
-  position: absolute !important;
+p.ljus-text {
+  color: #ccc;
 }
 
 .foten p {
