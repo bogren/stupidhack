@@ -18,6 +18,7 @@ body {
   animation-duration: 450ms;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
+  cursor: not-allowed;
 }
 
 #logo:hover + table {
@@ -29,12 +30,33 @@ a {
   color: red;
   text-decoration: none;
   transform: rotate(180deg);
+  transition: all .1s ease;
+  cursor: help;
 }
 
-a:hover {
+a.ingen-effect {
+  transform: none;
+  position: relative;
+  font-size: 20px;
+  right: 0;
+  transition: all .3s ease;
+}
+
+a.ingen-effect:hover {
+  right: -3px;
+}
+
+.emoji {
+  display: inline-block;
+  position: relative;
+  left: -5px;
+  bottom: -3px;
+}
+
+a:hover:not(.ingen-effect) {
   text-decoration: line-through;
   color: transparent;
-   text-shadow: 0 0 3px rgba(255,0,0,0.5);
+  text-shadow: 0 0 3px rgba(255,0,0,0.5);
 }
 
 hr {
@@ -49,6 +71,10 @@ p.sexton {
 
 p.ljus-text {
   color: #ccc;
+}
+
+:-webkit-full-screen {
+  position: absolute !important;
 }
 
 .foten p {
@@ -91,6 +117,6 @@ p.ljus-text {
 	70% { transform: translate(2px, 1px) rotate(-1deg); }
 	80% { transform: translate(-1px, -1px) rotate(1deg); }
 	90% { transform: translate(2px, 2px) rotate(0deg); }
-	100% { transform: translate(1px, -2px) rotate(-1deg) scale(1); }
+	100% { transform: translate(0, 0) rotate(0) scale(1); }
 
 }
