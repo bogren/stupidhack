@@ -105,12 +105,6 @@ board.on("ready", function() {
     //vDelta = createRemap(0, 100, 0, deltaY);
     hDelta = createRemap(0, 100, hMap(eyeX), hMap(x));
     vDelta = createRemap(0, 100, vMap(eyeY), vMap(y));
-    
-    var tut =[ 
-        [{degrees: hDelta(0)}, {degrees: hDelta(25)}, {degrees: hDelta(50)}, {degrees: hDelta(75)}, {degrees: hDelta(100)}],
-        [{degrees: vDelta(0)}, {degrees: vDelta(25)}, {degrees: vDelta(50)}, {degrees: vDelta(75)}, {degrees: vDelta(100)}],
-      ]
-    console.log(tut)
     var animation = new five.Animation(eye_servos);
     animation.enqueue({
       duration: 1000,
@@ -136,24 +130,64 @@ board.on("ready", function() {
     rgbMap = createRGBMap(eyeColors);
     strip.color(rgbStr(eyeColors)); // turns entire strip red using a hex colour
     strip.show();
-  }
-
-  setEyeColorArr(icyBlue);
-  randEyes();
+  } 
 
   // x: 0-100
   var setIntensity = function(x) {
     strip.color(rgbStr(rgbMap(x)));
     strip.show();
   }
+  var mouthAnim = new five.Animation(mouthS);
+  var idleAnim = new five.Animation(eye_servos);
+  
+  function makeEyeDeltaAnim(fromX, fromY, toX, toY){
+    var deltaX = hMap(toX) - hMap(fromX);
+    var deltaY = vMap(toY) - vMap(fromY);
 
-  function randEyes() {
-    eyeControl(Math.round(Math.random() * 100), Math.round(Math.random() * 100))
+    console.log('fromX: ' + fromX +' fromY: ' + fromY);
+    console.log('toX: ' + toX + ' toY: ' + toY);
+    //console.log('hmapeyeX: ' + hMap(eyeX) + ' hmapeyeY: ' + vMap(eyeY));
+    //console.log('hmapx: ' + hMap(x) + ' hmapy: ' + vMap(y));
+    
+    hDelta = createRemap(0, 100, hMap(fromX), hMap(toX));
+    vDelta = createRemap(0, 100, vMap(fromY), vMap(toY));
+    var s = {
+      duration: 2000,
+      cuePoints: [0, 0.25, 0.5, 0.75, 1.0],
+      keyFrames: [ 
+        [{degrees: hDelta(0)}, {degrees: hDelta(25)}, {degrees: hDelta(50)}, {degrees: hDelta(75)}, {degrees: hDelta(100)}],
+        [{degrees: vDelta(0)}, {degrees: vDelta(25)}, {degrees: vDelta(50)}, {degrees: vDelta(75)}, {degrees: vDelta(100)}],
+      ]
+    };
+    console.log(s)
+    return s;
+  }
+var t = undefined;
+var count = 0;
+  function addRandomEye(){
+    newX = Math.round(Math.random() * 100);
+    newY = Math.round(Math.random() * 100);
+    s = makeEyeDeltaAnim(eyeX, eyeY, newX, newY)
+    console.log(s.keyFrames)
+    idleAnim.enqueue(s);
+    
+    eyeX = newX;
+    eyeY = newY;
+    count += 1;
+    console.log(count);
+    if(count >= 10) {
+      clearInterval(t);
+    }
   }
 
-  var mouthAnim = new five.Animation(mouthS);
+  function randEyes() {
+      count = 0
+      console.log("Adding segment", count)
+      t = setInterval(addRandomEye, 1000);
+  }  
 
   function talk() {
+    idleAnim.stop()
     setEyeColorArr(evilRed);
     eye_servos.center();
     mouthAnim.enqueue({
@@ -170,6 +204,9 @@ board.on("ready", function() {
     setEyeColorArr(icyBlue);
     randEyes();
   }
+
+  setEyeColorArr(icyBlue);
+  randEyes();
 
   // Inject the `servo` hardware into
   // the Repl instance's context;
