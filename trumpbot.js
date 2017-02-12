@@ -70,11 +70,6 @@ board.on("ready", function() {
         gamma: 2.8, // set to a gamma that works nicely for WS2812
     });
 
-    // strip.on("ready", function() {
-    //   strip.color("rgb(150, 0, 0)"); // turns entire strip red using a hex colour
-    //   strip.show();
-    // });
-
   // Initialize a Servo collection
   // 0 : Horizontal
   // 1 : Vertical
@@ -157,7 +152,6 @@ board.on("ready", function() {
   }
 
   var mouthAnim = new five.Animation(mouthS);
-    
 
   function talk() {
     setEyeColorArr(evilRed);
@@ -176,7 +170,6 @@ board.on("ready", function() {
     setEyeColorArr(icyBlue);
     randEyes();
   }
-  
 
   // Inject the `servo` hardware into
   // the Repl instance's context;
