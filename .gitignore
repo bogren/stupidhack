@@ -38,3 +38,8 @@ jspm_packages
 
 # Texts
 tweets.txt
+
+# ojbc
+Dumknack/Dumknack.xcodeproj/project.xcworkspace/xcuserdata/*
+Dumknack/Dumknack.xcodeproj/xcuserdata/*
+Dumknack/Dumknack.xcodeproj/project.xcworkspace/contents.xcworkspacedata
