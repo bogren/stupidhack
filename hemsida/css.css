@@ -5,18 +5,62 @@ body {
   text-align: center;
   font-family: 'Courier', monospace;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.5;
+  margin: 0;
+  animation: shake .3s ease-in forwards;
+}
+
+#hemsida {
   max-width: 700px;
   margin: 0 auto;
 }
 
 #logo {
   opacity: 0;
-  animation-delay: 1s;
+  animation-delay: .1s;
   animation-name: bounceIn;
   animation-duration: 450ms;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
+  cursor: not-allowed;
+}
+
+#logo:hover + table {
+  animation: shake .3s ease-in infinite;
+}
+
+a {
+  display: inline-block;
+  color: red;
+  text-decoration: none;
+  transform: rotate(180deg);
+  transition: all .1s ease;
+  cursor: help;
+}
+
+a.ingen-effect {
+  transform: none;
+  position: relative;
+  font-size: 20px;
+  right: 0;
+  transition: all .3s ease;
+}
+
+a.ingen-effect:hover {
+  right: -3px;
+}
+
+.emoji {
+  display: inline-block;
+  position: relative;
+  left: -5px;
+  bottom: -3px;
+}
+
+a:hover:not(.ingen-effect) {
+  text-decoration: line-through;
+  color: transparent;
+  text-shadow: 0 0 3px rgba(255,0,0,0.5);
 }
 
 hr {
@@ -29,6 +73,10 @@ p.sexton {
   font-size: 18px;
 }
 
+video {
+  min-width: 100%;
+}
+
 p.ljus-text {
   color: #ccc;
 }
@@ -36,6 +84,11 @@ p.ljus-text {
 .foten p {
   font-size: 12px;
   margin-top: 30px;
+}
+
+::selection {
+  background: #fff;
+  color: #fff;
 }
 
 @keyframes bounceIn{
@@ -55,4 +108,19 @@ p.ljus-text {
     opacity: 1;
     transform: scale(1) translate3d(0,0,0);
   }
+}
+@keyframes shake  {
+
+	0% { transform: translate(2px, 1px) rotate(0deg) scale(1); }
+	10% { transform: translate(-1px, -2px) rotate(-1deg); }
+	20% { transform: translate(-3px, 0px) rotate(1deg); }
+	30% { transform: translate(0px, 2px) rotate(0deg); }
+	40% { transform: translate(1px, -1px) rotate(1deg); }
+	50% { transform: translate(-1px, 2px) rotate(-1deg); }
+	60% { transform: translate(-3px, 1px) rotate(0deg) scale(1.1); }
+	70% { transform: translate(2px, 1px) rotate(-1deg); }
+	80% { transform: translate(-1px, -1px) rotate(1deg); }
+	90% { transform: translate(2px, 2px) rotate(0deg); }
+	100% { transform: translate(0, 0) rotate(0) scale(1); }
+
 }

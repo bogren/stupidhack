@@ -16,9 +16,11 @@
     "url": "https://github.com/bogren/stupidhack/issues"
   },
   "homepage": "https://github.com/bogren/stupidhack#readme",
-  "dependencies" : {
-    "twitter": "1.7.0",
+  "dependencies": {
+    "forever": "^0.15.3",
+    "johnny-five": "^0.10.6",
+    "node-pixel": "^0.9.1",
     "say": "0.11.0",
-    "johnny-five": "0.10.6"
+    "twitter": "1.7.0"
   }
 }
