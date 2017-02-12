@@ -5,7 +5,7 @@ import subprocess
 
 @app.route('/')
 def read():
-   subprocess.check_output(['festival --tts test.txt'], shell=True)
+   subprocess.check_output(['python read_text.py'], shell=True)
    return 'Success!'
 
 if __name__ == '__main__':

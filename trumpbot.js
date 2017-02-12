@@ -26,12 +26,11 @@ function rgbStr(rgbArr) {
   var g = Math.round(rgbRemap(rgbArr[1]));
   var b = Math.round(rgbRemap(rgbArr[2]));
   var s = "rgb(" + r + "," + g + "," + b + ")"
-  console.log(s)
   return s
 }
 
 function loopColor() {
-  setTimeout(loopColor, 100);  
+  setTimeout(loopColor, 100);
 }
 
 // Servos
@@ -60,6 +59,9 @@ var rgbMap = createRGBMap(eyeColors);
 var icyBlue = [165,243,255];
 var evilRed = [255,0,0];
 
+var talkie = undefined
+var shutupie = undefined
+
 board.on("ready", function() {
 
   // Initialize LEDs
@@ -74,19 +76,19 @@ board.on("ready", function() {
   // 0 : Horizontal
   // 1 : Vertical
   var eyeHS = new five.Servo({
-        pin: 11, 
+        pin: 11,
         range: [hMin,hMax],
         startAt: hStart
       }
     )
   var eyeVS = new five.Servo({
-        pin: 12, 
+        pin: 12,
         range: [vMin,vMax],
         startAt: vStart
       }
     )
   var mouthS = new five.Servo({
-        pin: 10, 
+        pin: 10,
         range: [mMin,mMax],
         startAt: mStart
       }
@@ -94,13 +96,8 @@ board.on("ready", function() {
   var eye_servos = new five.Servos([eyeHS, eyeVS]);
 
   var eyeControl = function(x,y){
-    console.log('x: ' + x +' y: ' + y);
-    console.log('eyeX: ' + eyeX + ' eyeY: ' + eyeY);
-    console.log('hmapeyeX: ' + hMap(eyeX) + ' hmapeyeY: ' + vMap(eyeY));
-    console.log('hmapx: ' + hMap(x) + ' hmapy: ' + vMap(y));
     var deltaX = hMap(x) - hMap(eyeX);
     var deltaY = vMap(y) - vMap(eyeY);
-    console.log('deltaX: ' + deltaX + ' deltaY: ' + deltaY);
     //hDelta = createRemap(0, 100, 0, deltaX);
     //vDelta = createRemap(0, 100, 0, deltaY);
     hDelta = createRemap(0, 100, hMap(eyeX), hMap(x));
@@ -109,16 +106,13 @@ board.on("ready", function() {
     animation.enqueue({
       duration: 1000,
       cuePoints: [0, 0.25, 0.5, 0.75, 1.0],
-      keyFrames: [ 
+      keyFrames: [
         [{degrees: hDelta(0)}, {degrees: hDelta(25)}, {degrees: hDelta(50)}, {degrees: hDelta(75)}, {degrees: hDelta(100)}],
         [{degrees: vDelta(0)}, {degrees: vDelta(25)}, {degrees: vDelta(50)}, {degrees: vDelta(75)}, {degrees: vDelta(100)}],
       ]
     });
-    //console.log(animation)
     eyeX = x;
     eyeY = y;
-    console.log('eyeX: ' + eyeX + ' eyeY: ' + eyeY);
-    console.log('hmapeyeX: ' + hMap(eyeX) + ' hmapeyeY: ' + vMap(eyeY));
   }
 
   var setEyeColorArr = function(rgbArr) {
@@ -130,7 +124,7 @@ board.on("ready", function() {
     rgbMap = createRGBMap(eyeColors);
     strip.color(rgbStr(eyeColors)); // turns entire strip red using a hex colour
     strip.show();
-  } 
+  }
 
   // x: 0-100
   var setIntensity = function(x) {
@@ -139,27 +133,21 @@ board.on("ready", function() {
   }
   var mouthAnim = new five.Animation(mouthS);
   var idleAnim = new five.Animation(eye_servos);
-  
+
   function makeEyeDeltaAnim(fromX, fromY, toX, toY){
     var deltaX = hMap(toX) - hMap(fromX);
     var deltaY = vMap(toY) - vMap(fromY);
 
-    console.log('fromX: ' + fromX +' fromY: ' + fromY);
-    console.log('toX: ' + toX + ' toY: ' + toY);
-    //console.log('hmapeyeX: ' + hMap(eyeX) + ' hmapeyeY: ' + vMap(eyeY));
-    //console.log('hmapx: ' + hMap(x) + ' hmapy: ' + vMap(y));
-    
     hDelta = createRemap(0, 100, hMap(fromX), hMap(toX));
     vDelta = createRemap(0, 100, vMap(fromY), vMap(toY));
     var s = {
       duration: 2000,
       cuePoints: [0, 0.25, 0.5, 0.75, 1.0],
-      keyFrames: [ 
+      keyFrames: [
         [{degrees: hDelta(0)}, {degrees: hDelta(25)}, {degrees: hDelta(50)}, {degrees: hDelta(75)}, {degrees: hDelta(100)}],
         [{degrees: vDelta(0)}, {degrees: vDelta(25)}, {degrees: vDelta(50)}, {degrees: vDelta(75)}, {degrees: vDelta(100)}],
       ]
     };
-    console.log(s)
     return s;
   }
 var t = undefined;
@@ -168,13 +156,11 @@ var count = 0;
     newX = Math.round(Math.random() * 100);
     newY = Math.round(Math.random() * 100);
     s = makeEyeDeltaAnim(eyeX, eyeY, newX, newY)
-    console.log(s.keyFrames)
     idleAnim.enqueue(s);
-    
+
     eyeX = newX;
     eyeY = newY;
     count += 1;
-    console.log(count);
     if(count >= 10) {
       clearInterval(t);
     }
@@ -182,9 +168,8 @@ var count = 0;
 
   function randEyes() {
       count = 0
-      console.log("Adding segment", count)
       t = setInterval(addRandomEye, 1000);
-  }  
+  }
 
   function talk() {
     idleAnim.stop()
@@ -204,6 +189,9 @@ var count = 0;
     setEyeColorArr(icyBlue);
     randEyes();
   }
+
+  talkie = talk
+  shutupie = shut_up
 
   setEyeColorArr(icyBlue);
   randEyes();
