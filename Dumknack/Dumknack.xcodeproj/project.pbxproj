@@ -12,6 +12,9 @@
 		8069BAA51E4F95420024C715 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8069BAA31E4F95420024C715 /* Main.storyboard */; };
 		8069BAA71E4F95420024C715 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8069BAA61E4F95420024C715 /* Assets.xcassets */; };
 		8069BAAA1E4F95420024C715 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8069BAA81E4F95420024C715 /* LaunchScreen.storyboard */; };
+		8069BAB21E4FC3090024C715 /* alec.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8069BAB11E4FC3090024C715 /* alec.gif */; };
+		8069BAB41E4FC9790024C715 /* Web.html in Resources */ = {isa = PBXBuildFile; fileRef = 8069BAB31E4FC9790024C715 /* Web.html */; };
+		8069BAB61E4FD0420024C715 /* launch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8069BAB51E4FD0420024C715 /* launch.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		8069BAA61E4F95420024C715 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8069BAA91E4F95420024C715 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8069BAAB1E4F95420024C715 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8069BAB11E4FC3090024C715 /* alec.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = alec.gif; sourceTree = "<group>"; };
+		8069BAB31E4FC9790024C715 /* Web.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Web.html; sourceTree = "<group>"; };
+		8069BAB51E4FD0420024C715 /* launch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launch.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,9 @@
 				8069BAA61E4F95420024C715 /* Assets.xcassets */,
 				8069BAA81E4F95420024C715 /* LaunchScreen.storyboard */,
 				8069BAAB1E4F95420024C715 /* Info.plist */,
+				8069BAB11E4FC3090024C715 /* alec.gif */,
+				8069BAB51E4FD0420024C715 /* launch.jpg */,
+				8069BAB31E4FC9790024C715 /* Web.html */,
 			);
 			path = Dumknack;
 			sourceTree = "<group>";
@@ -125,6 +134,9 @@
 			files = (
 				8069BAAA1E4F95420024C715 /* LaunchScreen.storyboard in Resources */,
 				8069BAA71E4F95420024C715 /* Assets.xcassets in Resources */,
+				8069BAB61E4FD0420024C715 /* launch.jpg in Resources */,
+				8069BAB21E4FC3090024C715 /* alec.gif in Resources */,
+				8069BAB41E4FC9790024C715 /* Web.html in Resources */,
 				8069BAA51E4F95420024C715 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +311,7 @@
 				8069BAB01E4F95420024C715 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
