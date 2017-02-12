@@ -26,7 +26,7 @@ function rgbStr(rgbArr) {
   var g = Math.round(rgbRemap(rgbArr[1]));
   var b = Math.round(rgbRemap(rgbArr[2]));
   var s = "rgb(" + r + "," + g + "," + b + ")"
-  console.log(s)
+  // console.log(s)
   return s
 }
 
@@ -94,13 +94,13 @@ board.on("ready", function() {
   var eye_servos = new five.Servos([eyeHS, eyeVS]);
 
   var eyeControl = function(x,y){
-    console.log('x: ' + x +' y: ' + y);
-    console.log('eyeX: ' + eyeX + ' eyeY: ' + eyeY);
-    console.log('hmapeyeX: ' + hMap(eyeX) + ' hmapeyeY: ' + vMap(eyeY));
-    console.log('hmapx: ' + hMap(x) + ' hmapy: ' + vMap(y));
+    // console.log('x: ' + x +' y: ' + y);
+    // console.log('eyeX: ' + eyeX + ' eyeY: ' + eyeY);
+    // console.log('hmapeyeX: ' + hMap(eyeX) + ' hmapeyeY: ' + vMap(eyeY));
+    // console.log('hmapx: ' + hMap(x) + ' hmapy: ' + vMap(y));
     var deltaX = hMap(x) - hMap(eyeX);
     var deltaY = vMap(y) - vMap(eyeY);
-    console.log('deltaX: ' + deltaX + ' deltaY: ' + deltaY);
+    // console.log('deltaX: ' + deltaX + ' deltaY: ' + deltaY);
     //hDelta = createRemap(0, 100, 0, deltaX);
     //vDelta = createRemap(0, 100, 0, deltaY);
     hDelta = createRemap(0, 100, hMap(eyeX), hMap(x));
@@ -114,11 +114,11 @@ board.on("ready", function() {
         [{degrees: vDelta(0)}, {degrees: vDelta(25)}, {degrees: vDelta(50)}, {degrees: vDelta(75)}, {degrees: vDelta(100)}],
       ]
     });
-    //console.log(animation)
+    console.log(animation)
     eyeX = x;
     eyeY = y;
-    console.log('eyeX: ' + eyeX + ' eyeY: ' + eyeY);
-    console.log('hmapeyeX: ' + hMap(eyeX) + ' hmapeyeY: ' + vMap(eyeY));
+    // console.log('eyeX: ' + eyeX + ' eyeY: ' + eyeY);
+    // console.log('hmapeyeX: ' + hMap(eyeX) + ' hmapeyeY: ' + vMap(eyeY));
   }
 
   var setEyeColorArr = function(rgbArr) {
@@ -144,10 +144,10 @@ board.on("ready", function() {
     var deltaX = hMap(toX) - hMap(fromX);
     var deltaY = vMap(toY) - vMap(fromY);
 
-    console.log('fromX: ' + fromX +' fromY: ' + fromY);
-    console.log('toX: ' + toX + ' toY: ' + toY);
-    //console.log('hmapeyeX: ' + hMap(eyeX) + ' hmapeyeY: ' + vMap(eyeY));
-    //console.log('hmapx: ' + hMap(x) + ' hmapy: ' + vMap(y));
+    // console.log('fromX: ' + fromX +' fromY: ' + fromY);
+    // console.log('toX: ' + toX + ' toY: ' + toY);
+    // console.log('hmapeyeX: ' + hMap(eyeX) + ' hmapeyeY: ' + vMap(eyeY));
+    // console.log('hmapx: ' + hMap(x) + ' hmapy: ' + vMap(y));
     
     hDelta = createRemap(0, 100, hMap(fromX), hMap(toX));
     vDelta = createRemap(0, 100, vMap(fromY), vMap(toY));
@@ -159,7 +159,7 @@ board.on("ready", function() {
         [{degrees: vDelta(0)}, {degrees: vDelta(25)}, {degrees: vDelta(50)}, {degrees: vDelta(75)}, {degrees: vDelta(100)}],
       ]
     };
-    console.log(s)
+    // console.log(s)
     return s;
   }
 var t = undefined;
@@ -168,13 +168,13 @@ var count = 0;
     newX = Math.round(Math.random() * 100);
     newY = Math.round(Math.random() * 100);
     s = makeEyeDeltaAnim(eyeX, eyeY, newX, newY)
-    console.log(s.keyFrames)
+    // console.log(s.keyFrames)
     idleAnim.enqueue(s);
     
     eyeX = newX;
     eyeY = newY;
     count += 1;
-    console.log(count);
+    // console.log(count);
     if(count >= 10) {
       clearInterval(t);
     }
@@ -182,7 +182,7 @@ var count = 0;
 
   function randEyes() {
       count = 0
-      console.log("Adding segment", count)
+      // console.log("Adding segment", count)
       t = setInterval(addRandomEye, 1000);
   }  
 
