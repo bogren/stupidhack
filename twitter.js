@@ -28,6 +28,10 @@ function replace_word(string) {
     string = replace_mentions(string)
     string = append_haha(string)
     string = replace_amp(string)
+    string = replace_bracets(string)
+    string = replace_abe_bulbasaur(string)
+    string = replace_administration(string)
+    string = replace_democrats_charmander(string)
     return string
 }
 
@@ -42,6 +46,24 @@ function replace_mentions(string) {
 function replace_amp(string) {
     return string.replace(/(?:&amp;)/ig, 'and')
 }
+
+function replace_bracets(string) {
+    return string.replace(/[\(\)']+/g,'')
+}
+
+function replace_abe_bulbasaur(string) {
+    return string.replace(/(?:abe)/ig, 'bulbasaur')
+}
+
+function replace_administration(string) {
+    return string.replace(/(?:administration)/ig, 'pokiedecks')
+}
+
+function replace_democrats_charmander(string) {
+    return string.replace(/(?:democrats)/ig, 'charmander')
+}
+
+
 
 function append_haha(string) {
     var haha = ' wall wall wall wall wall wall wall'
