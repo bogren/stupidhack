@@ -22,15 +22,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQN-80-Zyg">
-                                <rect key="frame" x="32" y="311.5" width="311" height="44"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wFT-5h-O8Q">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <view alpha="0.14999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AZI-bN-fhu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1P-0m-Wmp">
+                                <rect key="frame" x="32" y="447" width="311" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.32156862745098036" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="mwJ-M2-fIp"/>
+                                    <constraint firstAttribute="height" constant="50" id="KTl-JD-EpU"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Random Tweet!">
-                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                <state key="normal" title="You got lucky!">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="didTapRead:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TgB-Ql-0P5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQN-80-Zyg">
+                                <rect key="frame" x="32" y="517" width="311" height="50"/>
+                                <color key="backgroundColor" red="0.8784313725490196" green="0.086274509803921567" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="mwJ-M2-fIp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
+                                <state key="normal" title="Total loser!">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -41,14 +68,37 @@
                                     <action selector="didTapRead:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MVf-l5-KAD"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by the World Wide Web" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LvK-Ag-ybd">
+                                <rect key="frame" x="32" y="635" width="311" height="16"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Light" family="Chalkboard SE" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="E1P-0m-Wmp" secondAttribute="trailing" constant="16" id="1AM-6l-oaa"/>
+                            <constraint firstAttribute="trailing" secondItem="AZI-bN-fhu" secondAttribute="trailing" id="4rF-PL-E53"/>
+                            <constraint firstItem="AZI-bN-fhu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6Zx-8U-9NS"/>
                             <constraint firstItem="EQN-80-Zyg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="9X4-wh-EHw"/>
-                            <constraint firstItem="EQN-80-Zyg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Oip-3E-hy2"/>
+                            <constraint firstItem="AZI-bN-fhu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="DpU-4D-ieD"/>
+                            <constraint firstItem="wFT-5h-O8Q" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Hx4-fS-wZJ"/>
+                            <constraint firstAttribute="trailing" secondItem="wFT-5h-O8Q" secondAttribute="trailing" id="JEv-AN-LKr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EQN-80-Zyg" secondAttribute="trailing" constant="16" id="OwC-Ae-Orv"/>
+                            <constraint firstItem="EQN-80-Zyg" firstAttribute="top" secondItem="E1P-0m-Wmp" secondAttribute="bottom" constant="20" id="QoA-WX-H3U"/>
+                            <constraint firstItem="LvK-Ag-ybd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="c5e-Xy-TsA"/>
+                            <constraint firstItem="E1P-0m-Wmp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="dpe-Pi-bQY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LvK-Ag-ybd" secondAttribute="trailing" constant="16" id="isF-gF-9Kk"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="EQN-80-Zyg" secondAttribute="bottom" constant="100" id="oXa-l3-SAw"/>
+                            <constraint firstItem="wFT-5h-O8Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="tnZ-Nb-m8t"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="wFT-5h-O8Q" secondAttribute="bottom" id="wQW-uX-LcE"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="LvK-Ag-ybd" secondAttribute="bottom" constant="16" id="wlc-dL-gC3"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AZI-bN-fhu" secondAttribute="bottom" id="ykl-nE-oKa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="wFT-5h-O8Q" id="bSF-MW-aVv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
